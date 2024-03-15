@@ -1,4 +1,4 @@
-name: manual change sup to 30
+name: manual change, si superieur a 30 minutes, error
 
 on:
   workflow_dispatch:

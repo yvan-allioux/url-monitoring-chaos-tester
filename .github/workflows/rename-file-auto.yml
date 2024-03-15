@@ -1,4 +1,4 @@
-name: auto-change
+name: auto-change, si inferieur a 30 minutes, error
 
 on:
   schedule:
