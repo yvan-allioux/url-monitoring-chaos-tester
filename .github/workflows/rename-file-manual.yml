@@ -15,9 +15,18 @@ jobs:
 
     - name: Rename file
       run: |
-        cp public/actual2.json public/temp2.json
-        cp public/actual1.json public/actual2.json
-        cp public/temp2.json public/actual1.json
+        # date en minute
+        date=$(date +"%Y-%m-%d-%H-%M")
+        
+        # si la minute actuelle est inférieure à 30
+        if [ $(date +"%M") -lt 30 ]; then
+          # on copie le fichier error.json dans temp.json
+          cp public/error.json public/temp.json
+        else
+          # on copie le fichier success.json dans temp.json
+          cp public/success.json public/temp.json
+        fi
+      
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
