@@ -1,0 +1,20 @@
+name: Rename file
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+
+jobs:
+  rename-file:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Rename file
+      run: |
+        cp actial2.json temp2.json
+        cp actial1.json actial2.json
+        cp temp2.json actial1.json
+
