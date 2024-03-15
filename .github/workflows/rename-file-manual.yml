@@ -13,13 +13,13 @@ jobs:
 
     - name: Rename file
       run: |
-        cp actual2.json temp2.json
-        cp actual1.json actual2.json
-        cp temp2.json actual1.json
+        cp public/actual2.json public/temp2.json
+        cp public/actual1.json public/actual2.json
+        cp public/temp2.json public/actual1.json
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./
+        publish_dir: ./public
 
