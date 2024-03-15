@@ -1,21 +1,24 @@
-name: Build2test
+name: Rename file manual
 
 on:
-  workflow_dispatch:
+  schedule:
+    - cron: '*/5 * * * *'
 
 jobs:
-  build:
+  rename-file-manual:
     runs-on: ubuntu-latest
     permissions:
       contents: write
 
     steps:
-    - name: Checkout
+    - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: run
+    - name: Rename file
       run: |
-        ls
+        cp public/actual2.json public/temp2.json
+        cp public/actual1.json public/actual2.json
+        cp public/temp2.json public/actual1.json
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
