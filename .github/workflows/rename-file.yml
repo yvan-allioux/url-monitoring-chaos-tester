@@ -2,7 +2,7 @@ name: Rename file
 
 on:
   schedule:
-    - cron: '*/3 * * * *'
+    - cron: '*/5 * * * *'
 
 jobs:
   rename-file:
@@ -17,4 +17,10 @@ jobs:
         cp actial2.json temp2.json
         cp actial1.json actial2.json
         cp temp2.json actial1.json
+
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./
 
