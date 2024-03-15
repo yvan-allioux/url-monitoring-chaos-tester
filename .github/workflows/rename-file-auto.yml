@@ -1,11 +1,11 @@
-name: Rename file manual
+name: auto-change
 
 on:
   schedule:
     - cron: '*/5 * * * *'
 
 jobs:
-  rename-file-manual:
+  auto-change:
     runs-on: ubuntu-latest
     permissions:
       contents: write

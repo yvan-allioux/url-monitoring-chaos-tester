@@ -1,10 +1,10 @@
-name: Build2test
+name: manual-change
 
 on:
   workflow_dispatch:
 
 jobs:
-  build:
+  manual-change:
     runs-on: ubuntu-latest
     permissions:
       contents: write
