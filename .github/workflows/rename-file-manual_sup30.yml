@@ -1,4 +1,4 @@
-name: manual-change
+name: manual change sup to 30
 
 on:
   workflow_dispatch:

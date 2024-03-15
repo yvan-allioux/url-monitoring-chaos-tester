@@ -1,4 +1,4 @@
-name: manual-change
+name: manual change inferieur a 30 minutes
 
 on:
   workflow_dispatch:
