@@ -1,8 +1,10 @@
 name: auto-change, si inferieur a 30 minutes, error
 
+#on:
+#  schedule:
+#    - cron: '*/10 * * * *'
 on:
-  schedule:
-    - cron: '*/10 * * * *'
+  workflow_dispatch:
 
 jobs:
   auto-change:

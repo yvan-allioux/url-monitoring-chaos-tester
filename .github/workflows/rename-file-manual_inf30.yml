@@ -1,4 +1,4 @@
-name: manual change inferieur a 30 minutes
+name: manual change, si inferieur a 30 minutes, error
 
 on:
   workflow_dispatch:
