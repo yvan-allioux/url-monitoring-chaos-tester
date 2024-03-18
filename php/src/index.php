@@ -8,13 +8,13 @@ if ($heure_actuelle < 30) {
     // Renvoie une réponse JSON avec le type "success"
     $reponse = array(
         "Type" => "success",
-        "Content" => "success we are NOT in the 30 first minutes of the hour."
+        "Content" => "success we are in the 30 first minutes of the hour."
     );
 } else {
     // Renvoie une réponse JSON avec le type "error"
     $reponse = array(
         "Type" => "error",
-        "Content" => "error we are in the 30 first minutes of the hour."
+        "Content" => "error we are NOT in the 30 first minutes of the hour."
     );
 }
 
