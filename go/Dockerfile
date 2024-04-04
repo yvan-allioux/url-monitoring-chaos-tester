@@ -1,23 +1,35 @@
-# Start from a lightweight version of Golang base image
-FROM golang:1.18-alpine
+# Utiliser une image de base légère de Golang
+FROM golang:1.18-alpine AS builder
 
-# Set the Current Working Directory inside the container
+# Définir le répertoire de travail à l'intérieur du conteneur
 WORKDIR /app
 
-# Copy the source from the current directory to the Working Directory inside the container
+# Copier le reste des fichiers source
 COPY . .
 
-# Install any needed packages specified in go.mod and go.sum
+# Exécuter go mod download pour cacher les dépendances
 RUN go mod download
 
-# Build the Go executable
-RUN go build -o main .
+# Compiler l'application Go
+RUN go build -o webserver .
 
-# This container exposes port 8090 to the outside world
+# Utiliser une nouvelle étape pour créer une image légère
+FROM alpine:latest
+
+# Définir le répertoire de travail dans le nouveau conteneur
+WORKDIR /root/
+
+# Copier le fichier exécutable webserver
+COPY --from=builder /app/webserver .
+
+# Copier les autres fichiers et dossiers nécessaires
+COPY --from=builder /app/static/ ./static/
+
+# Exposer le port 8080
 EXPOSE 8080
 
-# Run the executable
-CMD ["./main"]
+# Définir la commande pour exécuter l'application
+CMD ["./webserver"]
 
 
 #docker build -t gorestclient -f Dockerfile.client .
