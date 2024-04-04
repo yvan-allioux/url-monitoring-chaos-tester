@@ -1,0 +1,25 @@
+name: Docker Image CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: |
+        ls
+        cd go
+        docker build -t url-monitoring-chaos-tester .
+    - name: Create Docker image tar file
+      run: |
+        cd go
+        docker save -o url-monitoring-chaos-tester.tar url-monitoring-chaos-tester
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v4
+      with:
+        name: url-monitoring-chaos-tester
+        path: ./go/url-monitoring-chaos-tester.tar
+        retention-days: 5
