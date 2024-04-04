@@ -23,7 +23,7 @@ WORKDIR /root/
 COPY --from=builder /app/webserver .
 
 # Copier les autres fichiers et dossiers nécessaires
-COPY --from=builder /app/static/ ./static/
+COPY --from=builder /app/ ./
 
 # Exposer le port 8080
 EXPOSE 8080
